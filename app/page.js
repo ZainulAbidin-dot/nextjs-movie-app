@@ -64,8 +64,6 @@ export default function Home() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
-  const currentTheme = localStorage.getItem('theme');
-
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 0) {
@@ -119,7 +117,7 @@ export default function Home() {
         
         {/* Mobile Menu */}
         {menuOpen && (
-          <div className={`md:hidden fixed ml-32 ${isScrolled ? 'backdrop-blur-lg bg-black ml-40': 'backdrop-blur-lg bg-white/10'} h-[40vh] w-[50vw] p-4 space-y-4 flex flex-col justify-center rounded-2xl`}>
+          <div className={`md:hidden fixed ml-32 ${isScrolled ? 'backdrop-blur-lg bg-black': 'backdrop-blur-lg bg-white/10'} h-[40vh] w-[50vw] p-4 space-y-4 flex flex-col justify-center rounded-2xl`}>
             <Link href="/" className="block text-white text-lg hover:text-primary">Home</Link>
             <Link href="/tv-shows" className="block text-white text-lg hover:text-primary">TV Shows</Link>
             <Link href="/movies" className="block text-white text-lg hover:text-primary">Movies</Link>
@@ -149,7 +147,7 @@ export default function Home() {
         </section>
 
         {/* Movie Categories */}
-        <section className={`py-12 md:px-20 px-2 ${currentTheme === 'dark' ? 'text-white' : 'text-black'}`}>
+        <section className="py-12 md:px-20 px-2 text-black">
           <div className="container mx-auto px-4">
             {categories.map((category, index) => (
               <MovieCarousel key={index} title={category.title} movies={category.movies} />
@@ -158,7 +156,7 @@ export default function Home() {
         </section>
       </main>
 
-      <footer className={`bg-muted py-8 ${currentTheme === 'dark' ? 'text-white' : 'text-black'}`}>
+      <footer className="bg-muted py-8 text-black">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             <div>
